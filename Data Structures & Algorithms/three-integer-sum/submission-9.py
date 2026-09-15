@@ -1,0 +1,26 @@
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums = sorted(nums)
+
+        # print(nums)
+
+        rtn = []
+        for i in range(len(nums)-2):
+            j, k = i+1, len(nums)-1
+
+            while j < k:
+
+                if nums[j] + nums[k] == - nums[i]:
+                    # print(i, j, k)
+                    if [nums[i], nums[j], nums[k]] in rtn:
+                        pass
+                    else:
+                        rtn.append([nums[i], nums[j], nums[k]])
+                    k -= 1
+                    # break
+                elif nums[j] + nums[k] > - nums[i]:
+                    k -= 1
+                else:
+                    j += 1
+
+        return rtn
